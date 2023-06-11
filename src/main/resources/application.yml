@@ -1,0 +1,32 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/datajpa
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    # 최초생성 : jdbc:h2:~/datajpa
+    # 재접속   : jdbc:h2:tcp://localhost/~/datajpa
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000  # 배치 페치 크기
+
+  data:
+    web:
+      pageable:
+        default-page-size: 10           # 페이지 사이즈 기본값세팅
+        max-page-size: 2000             # 최대 페이지 크기 세팅
+        one-indexed-parameters: true    # 페이지 index 시작을 0이 아닌 1부터 시작하는 옵션 (비추천 옵션)
+
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace             # 로그 남기기
